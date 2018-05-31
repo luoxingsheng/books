@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Responsive Admin</title>
+    <!-- BOOTSTRAP STYLES-->
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+    <!-- FONTAWESOME STYLES-->
+    <link th:href="@{/css/font-awesome.css}" rel="stylesheet" />
+    <!-- CUSTOM STYLES-->
+    <link th:href="@{/css/custom.css}" rel="stylesheet" />
+    <link th:href="@{/css/pagination.css}" rel="stylesheet" />
+    <!-- GOOGLE FONTS-->
+    <script th:src="@{javascript/jquery-1.10.2.js}"></script>
+    <!-- BOOTSTRAP SCRIPTS -->
+    <script th:src="@{javascript/bootstrap.min.js}"></script>
+    <script th:src="@{/javascript/jquery.min.js}"></script>
+    <script th:src="@{https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+    <script th:src="@{javascript/jquery-1.10.2.js}"></script>
+    <!-- BOOTSTRAP SCRIPTS -->
+    <script th:src="@{javascript/bootstrap.min.js}"></script>
+    <!-- CUSTOM SCRIPTS -->
+    <script th:src="@{javascript/custom.js}"></script>
+    <script th:src="@{javascript/pagination.js}"></script>
+</head>
+<style>
+    td{
+        　　vertical-align: middle !important;
+    }
+    th{
+        　　vertical-align: middle !important;
+    }
+</style>
+<body>
+
+<div id="wrapper">
+    <div class="navbar navbar-default navbar-fixed-top" style="height: 15%">`
+        <div class="adjust-nav"  >
+            <div class="navbar-header col-md-3" >
+                <a class="navbar-brand" href="#">
+                    <img th:src="@{img/logo.png}" style="height:150%" />
+                </a>
+            </div>
+            <div>
+                <ul class="nav navbar-nav col-md-2" >
+                    <li ><a href="login.html" class="glyphicon glyphicon-book" ><span>书架</span></a> </li>
+                    <li><a href="register.html" class="glyphicon glyphicon-envelope"><span>信息</span></a></li>
+                    <li><a href="register.html" class="glyphicon glyphicon-user"><span>浏览历史</span></a></li>
+                </ul>
+                <div class="nav navbar-nav col-md-2" >
+                            <span class="logout-spn ">
+                  <a href="index" ><img th:src="@{img/name.png}" ></a>
+                 </span>
+                </div>
+                <ul class="nav navbar-nav navbar-right" >
+                    <li ><a href="index.html" class="glyphicon glyphicon-log-in" ><span>主页</span></a> </li>
+                    <li ><a href="register.html" class="glyphicon glyphicon-log-out"><span>注销</span></a></li>
+                </ul>
+
+                <form class="navbar-form navbar-right" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">搜索</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /. NAV TOP  -->
+<nav class="navbar-default navbar-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="main-menu">
+            <li class="active-link">
+                <a href="login.html" ><i class="fa fa-desktop "></i>个人信息</a>
+            </li>
+            <li>
+                <a href="ui.html"><i class="fa fa-table "></i>本月排行</a>
+            </li>
+            <li>
+                <a href="blank.html"><i class="fa fa-edit "></i>历史排行</a>
+            </li>
+
+            <li>
+                <a href="#"><i class="fa fa-qrcode "></i>完本</a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-bar-chart-o"></i>免费</a>
+            </li>
+
+            <li>
+                <a href="#"><i class="fa fa-user "></i>人气作者</a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-hacker-news "></i>新闻公告</a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-cab"></i>读者论坛</a>
+            </li>
+
+        </ul>
+    </div>
+
+</nav>
+<!-- /. NAV SIDE  -->
+<div class="copyrights">Collect from <a href="http://www.cssmoban.com/"  title="网站模板">网站模板</a></div>
+<div id="page-wrapper" >
+    <div id="page-inner">
+        <!-- /. ROW  -->
+        <hr />
+        <div class="row">
+            <div class="col-lg-12 ">
+                <strong>大神排行榜</strong>
+            </div>
+        </div>
+
+        <div class="table-responsive col-md-8 row text-center pad-top table-hover">
+            <table class="table">
+                <!--<caption>响应式表格布局</caption>-->
+                <thead>
+                <tr>
+                    <th style="text-align: center">作者</th>
+                    <th style="text-align: center">上榜书籍</th>
+                    <th style="text-align: center">本周人气</th></tr>
+                </thead>
+                <tbody>
+                <tr th:each="author:${datas}" style='text-align: center;'>
+                    <td th:text="${author.authorName}"></td>
+                    <td th:text="${author.authorBook}"></td>
+                    <td th:text="${author.authorDescription}"></td></tr>
+                <tr>
+                </tbody>
+            </table>
+            <div class="col-md-8 tcdPageCode"></div>
+        </div>
+
+        <!-- /. ROW  -->
+        <div class="row">
+            <div class="col-lg-12 ">
+                <br/>
+                <!--<div class="alert alert-danger">-->
+                <!--<strong>Want More Icons Free ? </strong> Checkout fontawesome website and use any icon <a target="_blank" href="http://fortawesome.github.io/Font-Awesome/icons/">Click Here</a>.-->
+                <!--</div>-->
+
+            </div>
+        </div>
+        <!-- /. ROW  -->
+    </div>
+    <!-- /. PAGE INNER  -->
+</div>
+<!-- /. PAGE WRAPPER  -->
+</div>
+</div>
+<div class="footer">
+
+
+    <div class="row">
+        <div class="col-lg-12" >
+            &copy;  2014 yourdomain.com | More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
+        </div>
+    </div>
+</div>
+<script th:inline="javascript">
+    var pages = [[${pages}]]
+    function handlePaginationClick(new_page_index, pagination_container){
+        location.href = "/authorlist?page=" + (new_page_index + 1);
+        return false;
+    }
+
+    $(function(){
+        $(".tcdPageCode").pagination(pages[0], {
+            items_per_page:pages[2], // 每页显示多少条记录
+            current_page: pages[1] - 1, // 当前显示第几页数据
+            num_display_entries:5, // 分页显示的条目数
+            next_text:">>",
+            prev_text:"<<",
+            num_edge_entries:5, // 连接分页主体，显示的条目数
+            callback:handlePaginationClick
+        });
+    });
+
+    function jump(param) {
+        location.href="/authorlist?page=" + param.id;
+    }
+
+</script>
+
+</body>
+</html>
